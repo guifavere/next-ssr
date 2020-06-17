@@ -3,28 +3,32 @@ import axios from 'axios';
 import Link from 'next/link';
 import Head from 'next/head';
 
-const User = ({ users }) => (
-  <div>
-    <Head>
-      <title>Users</title>
-    </Head>
-    <ul>
-      {users.map(user => (
-        <li key={user.id}>{ user.login }</li>
-      ))}
-    </ul>
-    <Link href="/">
-      <a>Voltar</a>
-    </Link>
-  </div>
-);
+import withAnalytics from '../src/hocs/withAnalytics';
 
-User.getInitialProps = async () => {
+function User({ users }) {
+  return (
+    <div>
+      <Head>
+        <title>Users</title>
+      </Head>
+      <ul>
+        {users.map(user => (
+          <li key={user.id}>{ user.login }</li>
+        ))}
+      </ul>
+      <Link href="/">
+        <a>Voltar</a>
+      </Link>
+    </div>
+  );
+};
+
+export async function getStaticProps() {
   const response = await axios.get(
     'https://api.github.com/orgs/facebook/members'
   );
 
-  return { users: response.data };
+  return { props: { users: response.data } };
 };
 
-export default User;
+export default withAnalytics()(User);

@@ -2,16 +2,20 @@ import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 
-const Home = () => (
-  <div>
-    <Head>
-      <title>Home</title>
-    </Head>
-    <h1>Hello World</h1>
-    <Link href="/users">
-      <a>Usuários</a>
-    </Link>
-  </div>
-);
+import withAnalytics from '../src/hocs/withAnalytics';
 
-export default Home;
+function Home() {
+  return (
+    <div>
+      <Head>
+        <title>Home</title>
+      </Head>
+      <h1>Hello World</h1>
+      <Link href="/users">
+        <a>Usuários</a>
+      </Link>
+    </div>
+  );
+};
+
+export default withAnalytics()(Home);
