@@ -20,6 +20,7 @@
     "build": "next build"
   },
   "devDependencies": {
+    "babel-plugin-root-import": "^6.5.0",
     "babel-plugin-styled-components": "^1.10.7"
   }
 }
