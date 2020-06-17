@@ -10,6 +10,7 @@ function Home() {
       <Head>
         <title>Home</title>
       </Head>
+      <img src="/images/batman.jpg" width="200" />
       <h1>Hello World</h1>
       <Link href="/users">
         <a>Usuários</a>
